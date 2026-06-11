@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    width: 50%;
+    height: 400px;
+    margin: auto;
+    border: 1px solid #000;
+
+    display: flex; /* Horizontal */
+    gap: 20px;
+    flex-direction: row;
+    justify-content: space-between; /* Horizontal */
+    align-items: center; /* Vertical */
+
+    /*justify-content: space-evenly; !* Horizontal *!*/
+    /*align-items: center; !* Vertical *!*/
+
+    flex-wrap: wrap;
+
+    /*flex-flow: row wrap;*/
+    /*align-content: space-evenly;*/
+}
+
+.box {
+    /* min-width: 100px; */
+    height: 100px;
+    background-color: #000;
+    color: #fff;
+    font-size: 2rem;
+    padding: 0.5rem;
+    /*width: 250px;*/
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    /*flex-grow: 1;*/
+    /*flex-shrink: 1;*/
+    /*flex-basis: 250px;*/
+
+    /*flex: 1 1 250px;*/
+}
+
+.child-3 {
+    flex: 0 3 400px; /* grow shrink basis */
+    background-color: orange;
+}
+
+.parent {
+    display: flex;
+    justify-content: space-between;
+}
+
+.child {
+    /*flex: 0 1 auto;*/
+    border: 1px solid black;
+    padding: 10px;
+
+    flex: 0 1 auto;
+}
+
+.child-one {
+    /*flex: 0 1 auto;*/
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.child-three {
+    /*flex: 0 1 auto;*/
+    flex-grow: 2;
+    /*width: 1000px;*/
+    flex-basis: 1000px;
+}
+
+/*.box:nth-child(2) {*/
+/*    flex: 2 2 150px;*/
+/*    order: 1;*/
+/*}*/

@@ -1,0 +1,14 @@
+.git
+.DS_Store
+
+**/.env
+**/.next
+**/.idea
+**/.DS_Store
+**/next-env.d.ts
+**/vite-env.d.ts
+
+**/dist/
+**/build/
+**/node_modules/
+

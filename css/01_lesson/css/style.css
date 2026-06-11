@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+NO:wght@100..400&family=Playwrite+NZ+Guides&display=swap');
+
+body {
+    font-size: 50px;
+}
+
+main {
+    font-family: "Playwrite NZ Guides", sans-serif;
+}
+
+h1,h2 {
+    color: blue;
+}
+
+p {
+    color: orange;
+}
+
+p {
+    color: purple;
+}
+
+.gray {
+    color: gray;
+}
+
+#second {
+    color: orange;
+}
+
+.highlight {
+    font-style: italic;
+    text-transform: uppercase;
+    background-color: black;
+    color: white;
+}
+
+
+/*h1,h2 {*/
+/*    color: blue;*/
+/*}*/
+
+/*p {*/
+/*    color: blue;*/
+/*}*/
+
+/*p {*/
+/*    color: purple;*/
+/*}*/
+
+/*#second {*/
+/*    font-style: italic;*/
+/*}*/
+
+/*.gray {*/
+/*    color: gray;*/
+/*}*/
+
+/*.highlight {*/
+/*    text-transform: uppercase;*/
+/*    background-color: gold;*/
+/*}*/
+
+/*body {*/
+/*    font-size: 22px;*/
+/*}*/
+
+/*main {*/
+/*    font-family: monospace;*/
+/*}*/
+
+/*h1,*/
+/*h2 {*/
+/*    color: blue;*/
+/*}*/
+
+/*p {*/
+/*    color: purple;*/
+/*}*/
+
+/*p {*/
+/*    color: red;*/
+/*}*/
+
+/*.highlight {*/
+/*    text-transform: uppercase;*/
+/*    background-color: gold;*/
+/*}*/
+
+/*.gray {*/
+/*    color: gray;*/
+/*}*/
+
+/*#second {*/
+/*    font-style: italic;*/
+/*}*/

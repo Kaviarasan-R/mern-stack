@@ -1,0 +1,35 @@
+/* 
+
+Typography is the way text is arranged and presented.
+
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body {
+    padding: 10%;
+    font-size: 20px;
+    font-family: "Poppins", sans-serif;
+}
+
+/* input,
+button {
+    font: inherit;
+} */
+
+p {
+    /* text-decoration: none;
+    text-transform: lowercase;
+    text-align: justify;
+    text-indent: 2em; */
+
+    line-height: 1.5;
+    font-weight: 100;
+    font-style: normal;
+}
+
+p:hover {
+    color: pink;
+    text-decoration: underline;
+    cursor: pointer;
+}

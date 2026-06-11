@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap");
+
+* {
+    margin: 0;
+}
+
+.btn-cls {
+    padding: 10px;
+    margin: 10px;
+    font-family: "Roboto", "sans-serif";
+    font-size: 18px;
+    font-weight: 400;
+    border-radius: 5px;
+    background: #07b992;
+    color: #210c33;
+}
+
+.btn-cls:hover {
+    background: #61dafb;
+    color: #650fa0;
+}
+
+.btn-primary {
+    background-color: purple;
+}
