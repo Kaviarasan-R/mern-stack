@@ -1,12 +1,14 @@
 const { configDotenv } = require("dotenv")
-const express = require('express');
-const cookieParser = require('cookie-parser');
-const userRouter = require("./routes/users.js");
-const authRouter = require("./routes/auth.js");
 
 configDotenv({
     path: ".env"
 })
+
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const userRouter = require("./routes/users.js");
+const authRouter = require("./routes/auth.js");
+const postRouter = require("./routes/posts.js");
 
 const PORT = process.env.PORT || 8080
 
@@ -22,6 +24,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/users", userRouter)
 app.use("/api/auth", authRouter)
+app.use("/api/posts", postRouter)
 
 /**
  * app.post("/user/:id/settings", (req, res) => {
@@ -44,5 +47,3 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
     console.log(`Example app listening on port ${PORT}`)
 })
-
-// TODO: PRISMA

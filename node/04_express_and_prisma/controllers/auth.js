@@ -1,14 +1,6 @@
 const bcrypt = require("bcrypt");
-const path = require("path");
 const jwt = require('jsonwebtoken');
-const {promises: fsPromises} = require("fs");
-
-const USERS_FILE = path.join(__dirname, '..', 'model', 'users.json');
-
-const usersDB = {
-    users: require(USERS_FILE),
-    setUsers: function (data) { this.users = data }
-}
+const prisma = require("../prisma/client");
 
 async function register(req, res) {
     const {username, password} = req.body
@@ -16,23 +8,16 @@ async function register(req, res) {
         return res.status(400).send({ message: "Username and password are required" });
     }
 
-    const duplicate = usersDB.users.find(u => u.username === username)
+    const duplicate = await prisma.user.findUnique({ where: { username: username } })
+    // SELECT * FROM user WHERE username = username;
 
     if (duplicate) {
         return res.status(409).send({ message: "Already registered" });
     }
 
-    try {
-        const hashedPwd = await bcrypt.hash(password, 10)
-        const newUser = { "username": username, "password": hashedPwd }
+    await prisma.user.create({ data: { username, password: await bcrypt.hash(password, 10) } })
 
-        usersDB.setUsers([...usersDB.users, newUser]);
-        await fsPromises.writeFile(USERS_FILE, JSON.stringify(usersDB.users, null, 2));
-
-        return res.status(201).send({ message: "Registered successfully." });
-    } catch (err) {
-        return res.status(500).send({ message: err.message });
-    }
+    return res.status(201).send({ message: "Registered successfully." });
 }
 
 async function login(req, res) {
@@ -41,7 +26,7 @@ async function login(req, res) {
         return res.status(400).send({ message: "Username and password are required" });
     }
 
-    const foundUser = usersDB.users.find(person => person.username === username);
+    const foundUser = await prisma.user.findUnique({ where: { username }, omit: { password: false } });
     if (!foundUser) {
         return res.status(401).send({ message: "User not found" });
     }
@@ -62,26 +47,21 @@ async function login(req, res) {
         { expiresIn: process.env.REFRESH_TOKEN_EXPIRES_IN }
     );
 
-    const currentUser = { ...foundUser, refreshToken };
-    const otherUsers = usersDB.users.filter(person => person.username !== foundUser.username);
-
-    usersDB.setUsers([currentUser, ...otherUsers]);
-    await fsPromises.writeFile(USERS_FILE, JSON.stringify(usersDB.users, null, 2));
+    await prisma.user.update({ where: { id: foundUser.id }, data: { refreshToken } });
+    // UPDATE user SET refreshToken = "" WHERE id = ""
 
     res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', secure: true, maxAge: 24 * 60 * 60 * 1000 });
     res.json({ accessToken });
 }
 
-function refresh(req, res) {
+async function refresh(req, res) {
     const cookies = req.cookies;
     if (!cookies?.jwt) return res.sendStatus(401);
 
     const refreshToken = cookies.jwt;
 
-    const foundUser = usersDB.users.find(person => person.refreshToken === refreshToken);
+    const foundUser = await prisma.user.findFirst({ where: { refreshToken } });
     if (!foundUser) return res.sendStatus(403); //Forbidden
-
-    console.log("refreshToken", refreshToken);
 
     jwt.verify(
         refreshToken,
@@ -89,7 +69,7 @@ function refresh(req, res) {
         (err, decoded) => {
             if (err || foundUser.username !== decoded.user) return res.sendStatus(403);
             const accessToken = jwt.sign(
-                { "username": decoded.username },
+                { user: decoded.user },
                 process.env.ACCESS_TOKEN_SECRET,
                 { expiresIn: process.env.ACCESS_TOKEN_EXPIRES_IN }
             );
