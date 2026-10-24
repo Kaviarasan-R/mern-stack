@@ -3,6 +3,8 @@
 ## Reference:
 - **Javascript**: https://github.com/Kaviarasan-R/javascript
 - **Typescript**: https://github.com/Kaviarasan-R/typescript
+- **Python**: https://github.com/Kaviarasan-R/python
+- **DSA Basics**: https://github.com/Kaviarasan-R/dsa-basics-1
 - **SQL**: https://github.com/Kaviarasan-R/sql
 
 ## Tech Stack:
