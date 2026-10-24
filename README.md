@@ -35,7 +35,7 @@
 ### Software Fundamentals:
 - Design Principles (Agile, SOLID, TDD)
 - Design Patterns (https://refactoring.guru/design-patterns)
-- DSA (https://www.geeksforgeeks.org/courses/dsa-self-paced)
+- DSA (https://github.com/Kaviarasan-R/gfg-dsa-self-paced-course)
 - Distributed Systems (https://github.com/Kaviarasan-R/distributed-systems)
 - System Design HLD/LLD (https://interviewready.io/learn/system-design-course)
 - Computer Networking (IPv4, Subnet, DNS...)
