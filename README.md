@@ -31,6 +31,7 @@
 - Testing: Jest
 - Payment Gateway: Stripe, Razorpay, PhonePe
 - Integrations: Nodemailer, SendGrid, Twilio
+- Monorepo: Turbo monorepo, NPM monorepo, PNPM monorepo (https://github.com/Kaviarasan-R/pnpm-monorepo)
 
 ### Software Fundamentals:
 - Design Principles (Agile, SOLID, TDD)
